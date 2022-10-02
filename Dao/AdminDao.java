@@ -12,11 +12,11 @@ import com.masai.exseption.FacultyException;
 
 public interface AdminDao {
    
-   public String AdminLogin(String username,int passwrod);
+   public String AdminLogin(String username,String passwrod);
    
-   public String ManageAdministator(String username,int passwrod);
+   public String ManageAdministator(String username,String passwrod);
    
-   public String FacultyLogin(String username,int passwrod); 
+   public String FacultyLogin(String username,String passwrod); 
    
    public String CreatCourse(int courseid, String courseName, int fee, String courseDescription);
 	
@@ -37,7 +37,7 @@ public interface AdminDao {
    
    public List<CoursePlan> getAllCoursPlanDetails()throws CoursPlanException;
    
-   public String UpadateFacultyPassword(String username,int passwrod);
+   public String UpadateFacultyPassword(String username,String passwrod);
 }
 
 

@@ -22,7 +22,7 @@ import com.masai.utility.DBUtil;
 public class AdminDaoImpl implements AdminDao{
 
 	@Override
-	public String AdminLogin(String username, int passwrod) {
+	public String AdminLogin(String username, String passwrod) {
         
        String massageString = "wrong password or username";
 		
@@ -31,7 +31,7 @@ public class AdminDaoImpl implements AdminDao{
 			
             PreparedStatement pStatement = conn.prepareStatement("select * from Admin where password =? And username =?");
 			
-			pStatement.setInt(1, passwrod);
+			pStatement.setString(1, passwrod);
 			pStatement.setString(2,username);
 			
 			ResultSet resultSet = pStatement.executeQuery();
@@ -46,7 +46,7 @@ public class AdminDaoImpl implements AdminDao{
 	
 	
 	@Override
-	public String ManageAdministator(String username, int passwrod) {
+	public String ManageAdministator(String username, String passwrod) {
 		String massageString = "Not Upadated....";
 		
 		try(Connection conn = DBUtil.provideConnection()) {
@@ -54,7 +54,7 @@ public class AdminDaoImpl implements AdminDao{
 			
            PreparedStatement pStatement = conn.prepareStatement("UPDATE Admin SET password =? WHERE username =?");
 			
-			pStatement.setInt(1, passwrod);
+			pStatement.setString(1, passwrod);
 			pStatement.setString(2,username);
 			
 			int x = pStatement.executeUpdate();
@@ -70,7 +70,7 @@ public class AdminDaoImpl implements AdminDao{
 
 
 	@Override
-	public String FacultyLogin(String username, int passwrod) {
+	public String FacultyLogin(String username, String passwrod) {
 		 String massageString = "wrong password or username";
 			
 			try(Connection conn = DBUtil.provideConnection()) {
@@ -78,7 +78,7 @@ public class AdminDaoImpl implements AdminDao{
 				
 	            PreparedStatement pStatement = conn.prepareStatement("select * from Admin where password =? And username =?");
 				
-				pStatement.setInt(1, passwrod);
+				pStatement.setString(1, passwrod);
 				pStatement.setString(2,username);
 				
 				ResultSet resultSet = pStatement.executeQuery();
@@ -394,7 +394,7 @@ public class AdminDaoImpl implements AdminDao{
 
 
 	@Override
-	public String UpadateFacultyPassword(String username, int passwrod) {
+	public String UpadateFacultyPassword(String username, String passwrod) {
        
 		String massageString = "Not Inserted....";
 		
@@ -403,7 +403,7 @@ public class AdminDaoImpl implements AdminDao{
 			
            PreparedStatement pStatement = conn.prepareStatement("UPDATE faculty SET password =? WHERE username =?");
 			
-			pStatement.setInt(1, passwrod);
+			pStatement.setString(1, passwrod);
 			pStatement.setString(2,username);
 			
 			int x = pStatement.executeUpdate();
